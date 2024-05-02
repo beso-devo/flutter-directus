@@ -3,16 +3,22 @@ import 'package:directus_api_manager/directus_api_manager.dart';
 @DirectusCollection()
 @CollectionMetadata(endpointName: "Posts")
 class PostDirectusModel extends DirectusItem {
-  PostDirectusModel.newItem({required String email, required String status})
+  PostDirectusModel.newItem(
+      {required String user,
+      required String date_published,
+      required String description})
       : super.newItem() {
-    setValue(email, forKey: "email");
-    setValue(status, forKey: "status");
+    setValue(user, forKey: "user");
+    setValue(datePublished, forKey: "date_published");
+    setValue(description, forKey: "description");
   }
 
   PostDirectusModel(Map<String, dynamic> rawReceivedData)
       : super(rawReceivedData);
 
-  String get email => getValue(forKey: "email");
+  String get user => getValue(forKey: "user");
 
-  String get status => getValue(forKey: "status");
+  String get datePublished => getValue(forKey: "date_published");
+
+  String get description => getValue(forKey: "description");
 }
